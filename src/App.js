@@ -9,13 +9,9 @@ import ImageGallery from './components/ImageGallery';
 export default function App() {
   const [query, setQuery] = useState('');
 
-  const handleFormSubmit = query => {
-    setQuery(query);
-  };
-
   return (
     <div>
-      <Searchbar onSubmit={handleFormSubmit} />
+      <Searchbar onSubmit={setQuery} />
       <ToastContainer autoClose={3000} />
       {query && <ImageGallery query={query} />}
     </div>

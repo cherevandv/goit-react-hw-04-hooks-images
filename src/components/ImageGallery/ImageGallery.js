@@ -24,14 +24,14 @@ export default function ImageGallery({ query }) {
         setImages(dataImages);
         if (dataImages.length === 0) {
           toast.error(`No such name exists`);
+          setStatus('idle');
+        } else {
+          setStatus('resolved');
+          window.scrollTo({
+            top: document.documentElement.scrollHeight,
+            behavior: 'smooth',
+          });
         }
-      })
-      .then(() => {
-        setStatus('resolved');
-        window.scrollTo({
-          top: document.documentElement.scrollHeight,
-          behavior: 'smooth',
-        });
       })
       .catch(() => setStatus('rejected'));
   }, [query]);
